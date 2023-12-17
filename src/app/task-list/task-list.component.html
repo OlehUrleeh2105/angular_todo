@@ -1,0 +1,33 @@
+<div class="main-wrap">
+  <app-task-form></app-task-form>
+  <div style="width: 100%;">
+    <div class="filter-wrap">
+      <mat-form-field>
+        <mat-label>Filter by Categories</mat-label>
+        <mat-select [(ngModel)]="selectedCategories" multiple (valueChange)="onCategoryChange()">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="tasks && tasks.length > 0">
+      <ul class="tasks">
+        <li *ngFor="let task of tasks">
+          <span class="title">{{ task.title }}</span>
+          <div class="specs">
+            <span>{{ task.category }}</span>
+            <span>{{ task.deadline | date }}</span>
+          </div>
+          <p>{{ task.description }}</p>
+          <div class="actions">
+            <mat-slide-toggle [(ngModel)]="task.isDone" (change)="onToggle(task.id)"></mat-slide-toggle>
+            <button mat-raised-button (click)="openEditModal(task)">Edit</button>
+            <button mat-raised-button color="warn" (click)="onDelete(task.id)">Delete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

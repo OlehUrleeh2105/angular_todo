@@ -1,0 +1,31 @@
+<!-- <form [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+  <input type="text" formControlName="title" placeholder="Title" required>
+  <select formArrayName="category" formControlName="category" required>
+    <option *ngFor="let category of categories" [value]>{{ category }}</option>
+  </select>
+  <textarea cols="30" rows="10" formControlName="description" placeholder="Description" required></textarea>
+  <input type="date" formControlName="deadline" required>
+  <button type="submit" [disabled]="!editForm.valid">Update</button>
+</form> -->
+
+<form class="form" [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title" placeholder="Title" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select formArrayName="category" formControlName="category" required>
+      <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput cols="30" rows="5" formControlName="description" placeholder="Description" required></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Deadline</mat-label>
+    <input matInput type="date" formControlName="deadline" required>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!editForm.valid">Update</button>
+</form>

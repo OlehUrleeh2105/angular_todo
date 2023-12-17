@@ -1,0 +1,23 @@
+<form class="form" [formGroup]="taskForm" (ngSubmit)="onSubmit()" novalidate>
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title" placeholder="Title" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select formArrayName="category" formControlName="category" required>
+      <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput cols="30" rows="5" formControlName="description" placeholder="Description" required></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Deadline</mat-label>
+    <input matInput type="date" formControlName="deadline" required>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!taskForm.valid">Add</button>
+</form>
+<button mat-raised-button color="primary" (click)="signOut()" style="margin-top: 10px;">Change account</button>

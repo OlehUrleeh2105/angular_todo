@@ -1,0 +1,17 @@
+<form class="example-form" [formGroup]="form">
+  <h1>Create an account</h1>
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput placeholder="Password" formControlName="password">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Confirm Password</mat-label>
+    <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="signUp()">Register</button>
+  <button mat-stroked-button color="primary" routerLink="/">Login</button>
+</form>
